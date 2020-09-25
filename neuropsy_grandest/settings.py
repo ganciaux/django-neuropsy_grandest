@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'debug_toolbar',
     'bootstrap4',
+    'crispy_forms',
     'neuropsy.apps.NeuropsyConfig',
 ]
 
