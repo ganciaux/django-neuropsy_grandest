@@ -23,6 +23,8 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='home'),
+    path('client/', include('neuropsy.urls.client')),
+    path('appointment/', include('neuropsy.urls.appointment')),
     path('admin/', admin.site.urls),
 ]
 

@@ -1,0 +1,47 @@
+{% extends "layout/base.html" %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url 'client:index' %}">Client</a></li>
+{% endblock %}
+
+{% block content %}
+
+<h6>Rechercher</h6>
+<form class="form-inline">
+<label class="sr-only" for="client_name">Name</label>
+<input type="text" class="form-control mb-2 mr-sm-2" id="client_name" placeholder="Nom">
+
+<label class="sr-only" for="client_email">Email</label>
+<div class="input-group mb-2 mr-sm-2">
+<div class="input-group-prepend">
+  <div class="input-group-text">@</div>
+</div>
+<input type="text" class="form-control" id="client_email" Email="Username">
+</div>
+
+<button type="button" class="btn btn-primary mb-2">Chercher</button>
+</form>
+
+<br>
+
+<h6>Liste des clients</h6>
+
+<table id="client-table" class="neuropsy-table table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>action</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for client in clients %}
+        <tr>
+            <td>{{ client.first_name }}</td>
+            <td>{{ client.last_name }}</td>
+            <td><a href="{% url 'clients:details' client.id %}"><button type="button" class="btn btn-secondary">Détails</button></a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
