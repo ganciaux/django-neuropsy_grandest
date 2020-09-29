@@ -1,0 +1,13 @@
+{% extends "layout/base.html" %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url 'client:index' %}">Client</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'client:details' client.id %}">Détails</a></li>
+{% endblock %}
+
+{% block content %}
+    <h4>{{client}}</h4>
+    <div id="client-details" class="neuropsy-details">
+        {% include "client/data.html" with client=client %}
+    </div>
+{% endblock %}

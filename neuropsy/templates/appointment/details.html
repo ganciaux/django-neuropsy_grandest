@@ -1,0 +1,13 @@
+{% extends "layout/base.html" %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url 'appointment:index' %}">Rendez-vous</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'appointment:details' appointment.id %}">Détails</a></li>
+{% endblock %}
+
+{% block content %}
+    <h4>{{appointment}}</h4>
+    <div id="appointment-details" class="neuropsy-details">
+        {% include "appointment/data.html" with appointment=appointment %}
+    </div>
+{% endblock %}

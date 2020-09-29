@@ -1,0 +1,23 @@
+{% extends "layout/card.html" %}
+
+{% block header %}
+    <h6>Liste des rendez-vous</h6>
+{% endblock %}
+
+{% block body %}
+    <table id="appointment-table" class="neuropsy-table table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.date }}</td>
+                <td><a href="{% url 'appointment:details' appointment.id %}"><button type="button" class="btn btn-secondary btn-sm">Détails</button></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

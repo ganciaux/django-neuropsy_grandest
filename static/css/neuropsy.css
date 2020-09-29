@@ -101,3 +101,28 @@ body {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
+
+.neuropsy-table td, th{
+  vertical-align: middle;
+}
+
+.neuropsy-list{
+  padding-top: 25px;
+}
+
+.neuropsy-details{
+  padding-top: 25px;
+}
+
+.neuropsy-form-group{
+  margin-bottom: 0.1rem;
+}
+
+.neuropsy-form-group label {
+  color: gray;
+  font-weight: bolder;
+}
+
+.neuropsy-form-group input {
+  colord: blue;
+}

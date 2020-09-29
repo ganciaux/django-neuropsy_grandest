@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'debug_toolbar',
     'bootstrap4',
+    'bootstrap_datepicker_plus',
     'crispy_forms',
     'neuropsy.apps.NeuropsyConfig',
 ]
@@ -132,3 +133,5 @@ STATICFILES_DIRS = [
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+DATE_INPUT_FORMATS = ('%d/%m/%Y')

@@ -19,12 +19,15 @@ pip install django-extensions
 pip install django-debug-toolbar (pip install Werkzeug to use runserver_plus)
 pip install django-bootstrap4
 pip install django-crispy-forms
+pip install django-bootstrap-datepicker-plus
 
 https://docs.djangoproject.com/en/3.1/
 https://github.com/django-extensions/django-extensions
 https://django-debug-toolbar.readthedocs.io/en/latest/
 https://pypi.org/project/django-bootstrap4/
 https://django-crispy-forms.readthedocs.io/en/latest/index.html
+https://pypi.org/project/django-bootstrap-datepicker-plus/
+https://django-bootstrap-datepicker-plus.readthedocs.io/en/latest/Walkthrough.html
 
 pip option: -–proxy=http://...
 

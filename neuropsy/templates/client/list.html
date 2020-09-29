@@ -1,0 +1,30 @@
+{% extends "layout/card.html" %}
+
+{% block header %}
+    <h6>Liste des clients</h6>
+{% endblock %}
+
+{% block body %}
+    <table id="client-table" class="neuropsy-table table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.first_name }}</td>
+                <td>{{ client.last_name }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.birth_date }}</td>
+                <td><a href="{% url 'client:details' client.id %}"><button type="button" class="btn btn-secondary btn-sm">Détails</button></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

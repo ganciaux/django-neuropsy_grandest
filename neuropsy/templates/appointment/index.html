@@ -1,11 +1,49 @@
 {% extends "layout/base.html" %}
 
+{% block css %}
+    {% load bootstrap4 %}
+    {% bootstrap_javascript jquery='full' %}
+    {{ form.media }}
+{% endblock %}
+
 {% block breadcrumb %}
     <li class="breadcrumb-item"><a href="{% url 'appointment:index' %}">Rendez-vous</a></li>
 {% endblock %}
 
 {% block content %}
+    <h4>Recherche:</h4>
+    <form action="{% url 'appointment:index' %}" method="post" class="form-inline">
+        {% csrf_token %}
+        {% bootstrap_form form layout='inline' %}
+        {% buttons %}
+            <button type="button" onclick="appointmentSearch()" class="btn btn-primary">Chercher</button>
+        {% endbuttons %}
+    </form>
+    <div id="appointment-list" class="neuropsy-list">
+        {% if appointment %}
+            {% include "appointment/list.html" with appointments=appointments %}
+        {% endif %}
+    </div>
+{% endblock %}
 
-<h6>Rechercher</h6>
-
+{% block js %}
+    <script>
+        function appointmentSearch() {
+            var date_from = $("#id_date_from").val();
+            var date_to = $("#id_date_to").val();
+            $.ajax({
+                url: '{% url 'appointment:search' %}',
+                type : "GET",
+                data: {'date_from': date_from, 'date_to': date_to},
+                dataType: 'html',
+                success: function (data) {
+                    $('#appointment-list').html(data);
+                },
+                error: function (xhr,errmsg,err) {
+                    $('#results').html("<div class='alert-box alert radius' data-alert>Oops! " + errmsg + " <a href='#' class='close'>&times;</a></div>");
+                    console.log(xhr.status + ": " + xhr.responseText);
+                }
+            });
+        }
+    </script>
 {% endblock %}
