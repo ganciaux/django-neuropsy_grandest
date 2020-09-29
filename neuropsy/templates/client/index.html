@@ -40,7 +40,7 @@
                     $('#client-list').html(data);
                 },
                 error: function (xhr,errmsg,err) {
-                    $('#results').html("<div class='alert-box alert radius' data-alert>Oops! " + errmsg + " <a href='#' class='close'>&times;</a></div>");
+                    $('#client-list').html("<div class='alert-box alert radius' data-alert>Oops! " + errmsg + " <a href='#' class='close'>&times;</a></div>");
                     console.log(xhr.status + ": " + xhr.responseText);
                 }
             });

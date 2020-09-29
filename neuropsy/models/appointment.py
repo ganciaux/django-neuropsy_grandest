@@ -45,4 +45,7 @@ class Appointment(TimeStampedModel):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.appointment_date.strftime("%d-%b-%Y (%H:%M)") + ' ' + self.client.first_name
+        return self.date.strftime("%d-%m-%Y %H:%M") + ' ' + self.client.first_name
+
+    def get_date_display(self):
+        return self.date.strftime("%d-%m-%Y %H:%M")

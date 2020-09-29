@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import JsonResponse
+from datetime import datetime
 from neuropsy.forms.appointment import NameForm
 from neuropsy.models import Appointment
 
@@ -22,9 +23,10 @@ def details(request, appointment_id):
 
 
 def search(request):
-    date_from = request.GET.get('date_from', None)
-    date_to = request.GET.get('date_to', None)
-    appointments = Appointment.objects.exclude(date__lte=date_from).filter(date__gte=date_to)
+    date_from = datetime.strptime(request.GET.get('date_from', None), "%d-%m-%Y %H:%M")
+    date_to = datetime.strptime(request.GET.get('date_to', None), "%d-%m-%Y %H:%M")
+
+    appointments = Appointment.objects.exclude(date__lte=date_from).exclude(date__gte=date_to)
     if len(appointments) > 0:
         context = {
             'appointments': appointments,

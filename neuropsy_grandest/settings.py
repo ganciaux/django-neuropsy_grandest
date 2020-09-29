@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'bootstrap4',
     'bootstrap_datepicker_plus',
-    'crispy_forms',
     'neuropsy.apps.NeuropsyConfig',
 ]
 
@@ -110,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'fr'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Europe/Paris'
 
@@ -126,6 +125,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT =  BASE_DIR / "static_media"
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
@@ -134,4 +135,6 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
-DATE_INPUT_FORMATS = ('%d/%m/%Y')
+DATE_INPUT_FORMATS = "%d-%m-%Y"
+DATETIME_FORMAT="%d-%m-%Y %H:%M"
+DATETIME_INPUT_FORMATS = "%d-%m-%Y %H:%M"

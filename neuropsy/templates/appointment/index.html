@@ -2,6 +2,7 @@
 
 {% block css %}
     {% load bootstrap4 %}
+    {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
     {{ form.media }}
 {% endblock %}
@@ -40,7 +41,7 @@
                     $('#appointment-list').html(data);
                 },
                 error: function (xhr,errmsg,err) {
-                    $('#results').html("<div class='alert-box alert radius' data-alert>Oops! " + errmsg + " <a href='#' class='close'>&times;</a></div>");
+                    $('#appointment-list').html("<div class='alert-box alert radius' data-alert>Oops! " + errmsg + " <a href='#' class='close'>&times;</a></div>");
                     console.log(xhr.status + ": " + xhr.responseText);
                 }
             });

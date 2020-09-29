@@ -48,3 +48,4 @@ python manage.py check
 python manage.py migrate
 python manage.py shell_plus
 python manage.py runserver_plus
+python manage.py collectstatic
