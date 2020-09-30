@@ -1,0 +1,20 @@
+{% extends "layout/base.html" %}
+
+{% block css %}
+    {% load bootstrap4 %}
+    {% bootstrap_javascript jquery='full' %}
+    {{ form.media }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url 'article:index' %}">Article</a></li>
+{% endblock %}
+
+{% block content %}
+    <h4>Article:</h4>
+    <div id="article-list" class="neuropsy-list">
+        {% if articles %}
+            {% include "article/list.html" with articles=articles %}
+        {% endif %}
+    </div>
+{% endblock %}

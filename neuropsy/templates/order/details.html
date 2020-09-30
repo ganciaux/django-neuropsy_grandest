@@ -1,0 +1,13 @@
+{% extends "layout/base.html" %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url 'order:index' %}">Commande</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'order:details' order.id %}">Détails</a></li>
+{% endblock %}
+
+{% block content %}
+    <h4>{{order}}</h4>
+    <div id="order-details" class="neuropsy-details">
+        {% include "order/data.html" with order=order %}
+    </div>
+{% endblock %}

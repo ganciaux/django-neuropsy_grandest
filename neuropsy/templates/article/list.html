@@ -1,0 +1,28 @@
+{% extends "layout/card.html" %}
+
+{% block header %}
+    <h6>Liste des articles</h6>
+{% endblock %}
+
+{% block body %}
+    <table id="article-table" class="neuropsy-table table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Label</th>
+                <th>Prix</th>
+                <th>Description</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.label }}</td>
+                <td>{{ article.price }}</td>
+                <td>{{ article.description }}</td>
+                <td><a href="{% url 'article:details' article.id %}"><button type="button" class="btn btn-secondary btn-sm">Détails</button></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

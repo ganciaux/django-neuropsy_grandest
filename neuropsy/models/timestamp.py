@@ -42,3 +42,12 @@ class TimeStampedModel(models.Model):
                     }
                 )
         return fields
+
+
+    def date_validate(date_text, format='%d-%m-%Y %H:%M'):
+        try:
+            if date_text != datetime.strptime(date_text, format).strftime(format):
+                raise ValueError
+            return True
+        except ValueError:
+            return False

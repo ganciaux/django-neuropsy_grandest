@@ -1,0 +1,13 @@
+{% extends "layout/base.html" %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url 'article:index' %}">Article</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'article:details' article.id %}">Détails</a></li>
+{% endblock %}
+
+{% block content %}
+    <h4>{{article}}</h4>
+    <div id="article-details" class="neuropsy-details">
+        {% include "article/data.html" with article=article %}
+    </div>
+{% endblock %}

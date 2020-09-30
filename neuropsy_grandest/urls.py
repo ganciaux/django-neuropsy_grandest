@@ -25,6 +25,8 @@ urlpatterns = [
     path('', views.index, name='home'),
     path('client/', include('neuropsy.urls.client')),
     path('appointment/', include('neuropsy.urls.appointment')),
+    path('article/', include('neuropsy.urls.article')),
+    path('order/', include('neuropsy.urls.order')),
     path('admin/', admin.site.urls),
 ]
 
