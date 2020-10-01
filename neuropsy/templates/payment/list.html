@@ -1,0 +1,23 @@
+{% extends "layout/card.html" %}
+
+{% block header %}
+    <h6>Liste des paiments</h6>
+{% endblock %}
+
+{% block body %}
+    <table id="payment-table" class="neuropsy-table table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for payment in payments %}
+            <tr>
+                <td>{{ payment.date }}</td>
+                <td><a href="{% url 'payment:details' payment.id %}"><button type="button" class="btn btn-secondary btn-sm">Détails</button></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

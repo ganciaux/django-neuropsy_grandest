@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'bootstrap4',
     'bootstrap_datepicker_plus',
+    'reportlab',
     'neuropsy.apps.NeuropsyConfig',
 ]
 

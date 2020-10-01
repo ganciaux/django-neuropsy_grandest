@@ -1,0 +1,13 @@
+{% extends "layout/base.html" %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url 'payment:index' %}">Paiement</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'payment:details' payment.id %}">Détails</a></li>
+{% endblock %}
+
+{% block content %}
+    <h4>{{payment}}</h4>
+    <div id="payment-details" class="neuropsy-details">
+        {% include "payment/data.html" with payment=payment %}
+    </div>
+{% endblock %}

@@ -1,5 +1,6 @@
 from django.db import models
 from .client import Client
+from .order import Order
 from .timestamp import TimeStampedModel
 
 
@@ -43,6 +44,7 @@ class Appointment(TimeStampedModel):
     description = models.TextField(blank=True)
     date = models.DateTimeField()
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.date.strftime("%d-%m-%Y %H:%M") + ' ' + self.client.first_name

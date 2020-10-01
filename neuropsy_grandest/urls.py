@@ -23,10 +23,13 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='home'),
+    path('pdf', views.pdf, name='pdf'),
+    path('csv', views.csv, name='csv'),
     path('client/', include('neuropsy.urls.client')),
     path('appointment/', include('neuropsy.urls.appointment')),
     path('article/', include('neuropsy.urls.article')),
     path('order/', include('neuropsy.urls.order')),
+    path('payment/', include('neuropsy.urls.payment')),
     path('admin/', admin.site.urls),
 ]
 

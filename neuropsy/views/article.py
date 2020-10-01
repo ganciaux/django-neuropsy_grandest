@@ -9,6 +9,7 @@ def index(request):
     }
     return render(request, 'article/index.html', context)
 
+
 def details(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
     context = {

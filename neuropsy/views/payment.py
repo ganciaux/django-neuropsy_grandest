@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import JsonResponse
 from datetime import datetime
-from neuropsy.forms.order import NameForm
-from neuropsy.models import Order
+from neuropsy.forms.payment import NameForm
+from neuropsy.models import Payment
 
 
 def date_validate(date_text, format='%d-%m-%Y %H:%M'):
@@ -13,36 +13,37 @@ def date_validate(date_text, format='%d-%m-%Y %H:%M'):
     except ValueError:
         return False
 
+
 def index(request):
     context = {
         'form': NameForm()
     }
-    return render(request, 'order/index.html', context)
+    return render(request, 'payment/index.html', context)
 
 
-def details(request, order_id):
-    order = get_object_or_404(Order, pk=order_id)
+def details(request, payment_id):
+    payment = get_object_or_404(Payment, pk=payment_id)
     context = {
-        'order': order,
-        'order_data': order.get_all_fields(),
-        'error_message': "La commande n'existe pas.",
+        'payment': payment,
+        'payment_data': payment.get_all_fields(),
+        'error_message': "Le paiement n'existe pas.",
     }
-    return render(request, 'order/details.html', context)
+    return render(request, 'payment/details.html', context)
 
 
 def search(request):
     if date_validate(request.GET.get('date_from', None))==True and date_validate(request.GET.get('date_to', None))==True:
         date_from = datetime.strptime(request.GET.get('date_from', None), "%d-%m-%Y %H:%M")
         date_to = datetime.strptime(request.GET.get('date_to', None), "%d-%m-%Y %H:%M")
-        orders = Order.objects.exclude(date__lte=date_from).exclude(date__gte=date_to)
-        if len(orders) > 0:
+        payments = Payment.objects.exclude(date__lte=date_from).exclude(date__gte=date_to)
+        if len(payments) > 0:
             context = {
-                'orders': orders,
-                'error_message': "La commande n'existe pas.",
+                'payments': payments,
+                'error_message': "Le paiement n'existe pas.",
             }
-            return render(request, 'order/list.html', context)
+            return render(request, 'payment/list.html', context)
         context = {
-            'message': 'Aucune commande',
+            'message': 'Aucun paiement',
             'type': 'primary'
         }
     
