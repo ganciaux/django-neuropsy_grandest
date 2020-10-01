@@ -68,13 +68,13 @@ class Client(TimeStampedModel):
     address = models.CharField(max_length=32, blank=True, verbose_name='Adresse')
     city = models.CharField(max_length=32, blank=True, verbose_name='Ville')
     zip = models.CharField(max_length=32, blank=True, verbose_name='Code postal')
-    CLIENT_ORIGIN_NONE = 'NONE'
+    CLIENT_ORIGIN_OTHER = 'OTHER'
     CLIENT_ORIGIN_INTERNET = 'INTERNET'
     CLIENT_ORIGIN_CAMPS = 'CAMPS'
     CLIENT_ORIGIN_LIBERAL = 'LIBERAL'
     CLIENT_ORIGIN_PMI = 'PMI'
     CLIENT_ORIGIN_CHOICES = [
-        (CLIENT_ORIGIN_NONE, 'Aucun'),
+        (CLIENT_ORIGIN_OTHER, 'Autre'),
         (CLIENT_ORIGIN_INTERNET, 'Internet'),
         (CLIENT_ORIGIN_CAMPS, 'CAMPS'),
         (CLIENT_ORIGIN_LIBERAL, 'Libéral'),
@@ -84,7 +84,7 @@ class Client(TimeStampedModel):
         verbose_name = 'Origine',
         max_length=16,
         choices=CLIENT_ORIGIN_CHOICES,
-        default=CLIENT_ORIGIN_NONE,
+        default=CLIENT_ORIGIN_OTHER,
     )
     birth_date = models.DateField(null=True, blank=True, verbose_name='Date de naissance')
     description = models.TextField(blank=True, verbose_name='Description')

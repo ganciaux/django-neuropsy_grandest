@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import JsonResponse
 from datetime import datetime
-from neuropsy.forms.payment import NameForm
+from neuropsy.forms.payment import searchForm
 from neuropsy.models import Payment
 
 
@@ -16,7 +16,7 @@ def date_validate(date_text, format='%d-%m-%Y %H:%M'):
 
 def index(request):
     context = {
-        'form': NameForm()
+        'form': searchForm()
     }
     return render(request, 'payment/index.html', context)
 

@@ -1,1 +1,1 @@
-from .search import NameForm
+from .search import searchForm

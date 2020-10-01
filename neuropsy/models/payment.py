@@ -5,15 +5,12 @@ from .timestamp import TimeStampedModel
 
 
 class Payment(TimeStampedModel):
-
-    PAYMENT_TYPE_NONE = 'NONE'
     PAYMENT_TYPE_CHECK = 'CHECK'
     PAYMENT_TYPE_CASH = 'CASH'
     PAYMENT_TYPE_CREDIT_CARD = 'CREDIT_CARD'
     PAYMENT_TYPE_TRANSFER = 'TRANSFER'
     PAYMENT_TYPE_OTHER = 'OTHER'
     PAYMENT_TYPE_CHOICES = [
-        (PAYMENT_TYPE_NONE, 'Aucun'),
         (PAYMENT_TYPE_CHECK, 'Chèque'),
         (PAYMENT_TYPE_CASH, 'Espèce'),
         (PAYMENT_TYPE_CREDIT_CARD, 'Carte de crédit'),
@@ -23,7 +20,7 @@ class Payment(TimeStampedModel):
     type = models.CharField(
         max_length=16,
         choices=PAYMENT_TYPE_CHOICES,
-        default=PAYMENT_TYPE_NONE,
+        default=PAYMENT_TYPE_CHECK,
     )
     amount = models.DecimalField(decimal_places=2, max_digits=10, verbose_name='Montant')
     date = models.DateTimeField()

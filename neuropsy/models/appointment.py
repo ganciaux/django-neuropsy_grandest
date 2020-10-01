@@ -11,6 +11,7 @@ class Appointment(TimeStampedModel):
     APPOINTMENT_TYPE_BILAN = 'BILAN'
     APPOINTMENT_TYPE_FOLLOW_UP = 'FOLLOW_UP'
     APPOINTMENT_TYPE_SYNTHESIS = 'SYNTHESIS'
+    APPOINTMENT_TYPE_MEETING = 'MEETING'
     APPOINTMENT_TYPE_CHOICES = [
         (APPOINTMENT_TYPE_NONE, 'Aucun'),
         (APPOINTMENT_TYPE_INITIAL, 'Consultation initiale'),
@@ -18,6 +19,7 @@ class Appointment(TimeStampedModel):
         (APPOINTMENT_TYPE_BILAN, 'Bilan'),
         (APPOINTMENT_TYPE_FOLLOW_UP, 'Suivi'),
         (APPOINTMENT_TYPE_SYNTHESIS, 'Synthèse'),
+        (APPOINTMENT_TYPE_MEETING, 'Réunion'),
     ]
     type = models.CharField(
         max_length=16,
@@ -25,15 +27,14 @@ class Appointment(TimeStampedModel):
         default=APPOINTMENT_TYPE_NONE,
     )
     APPOINTMENT_STATUS_NONE = 'NONE'
+    APPOINTMENT_STATUS_NORMAL = 'NORMAL'
     APPOINTMENT_STATUS_COMING = 'COMING'
     APPOINTMENT_STATUS_CANCELED = 'CANCELED'
     APPOINTMENT_STATUS_FINISHED = 'FINISHED'
     APPOINTMENT_STATUS_POSTPONED = 'POSTPONED'
     APPOINTMENT_STATUS_CHOICES = [
-        (APPOINTMENT_STATUS_NONE, 'Aucun'),
-        (APPOINTMENT_STATUS_COMING, 'A venir'),
+        (APPOINTMENT_STATUS_NONE, 'Normal'),
         (APPOINTMENT_STATUS_CANCELED, 'Annulé'),
-        (APPOINTMENT_STATUS_FINISHED, 'Terminé'),
         (APPOINTMENT_STATUS_POSTPONED, 'Reporté'),
     ]
     status = models.CharField(

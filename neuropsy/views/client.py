@@ -1,12 +1,12 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import JsonResponse
-from neuropsy.forms.client import NameForm
+from neuropsy.forms.client import searchForm
 from neuropsy.models import Client
 
 
 def index(request):
     context = {
-        'form': NameForm(),
+        'form': searchForm(),
         'clients': Client.objects.order_by('first_name')
     }
     return render(request, 'client/index.html', context)
