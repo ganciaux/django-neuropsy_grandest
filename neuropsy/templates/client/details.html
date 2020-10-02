@@ -10,4 +10,51 @@
     <div id="client-details" class="neuropsy-details">
         {% include "client/data.html" with client=client %}
     </div>
+    <br>
+    <div>
+        <div class="accordion" id="client-accordion">
+      <div class="card">
+        <div class="card-header" id="client-order">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#client-collapse-order" aria-expanded="false" aria-controls="client-collapse-order">
+              Commandes <span class="badge badge-info">{{ client.order_set.all.count }}</span>
+            </button>
+          </h2>
+        </div>
+        <div id="client-collapse-order" class="collapse" aria-labelledby="client-order" data-parent="#client-accordion">
+          <div class="card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="client-appointment">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#client-collapse-appointment" aria-expanded="false" aria-controls="client-collapse-appointment">
+              Rendez-vous <span class="badge badge-info">{{ client.appointment_set.all.count }}</span>
+            </button>
+          </h2>
+        </div>
+        <div id="client-collapse-appointment" class="collapse" aria-labelledby="client-appointment" data-parent="#client-accordion">
+          <div class="card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          </div>
+        </div>
+      </div>
+        <div class="card">
+        <div class="card-header" id="client-payment">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#client-collapse-payment" aria-expanded="false" aria-controls="client-collapse-payment">
+              Paiements <span class="badge badge-info">{{ client.payment_set.all.count }}</span>
+            </button>
+          </h2>
+        </div>
+        <div id="client-collapse-payment" class="collapse" aria-labelledby="client-payment" data-parent="#client-accordion">
+          <div class="card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
 {% endblock %}

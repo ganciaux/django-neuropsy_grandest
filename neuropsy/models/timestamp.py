@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import datetime
 
 class TimeStampedModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -43,11 +43,23 @@ class TimeStampedModel(models.Model):
                 )
         return fields
 
-
-    def date_validate(date_text, format='%d-%m-%Y %H:%M'):
+    @classmethod
+    def date_is_valide(cls, date_text, format='%d-%m-%Y %H:%M'):
         try:
             if date_text != datetime.strptime(date_text, format).strftime(format):
                 raise ValueError
             return True
         except ValueError:
             return False
+
+    @classmethod
+    def get_datetimes(cls, dates, dates_datetime, format='%d-%m-%Y %H:%M'):
+        dates_datetime = dates_datetime
+        result = True
+        for key in dates.keys():
+            if not cls.date_is_valide(dates[key], format):
+                result = False
+            else:
+                dates_datetime[key] = datetime.strptime(dates[key], format)
+        return result
+

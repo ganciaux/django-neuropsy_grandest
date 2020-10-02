@@ -40,8 +40,7 @@
                     $('#appointment-list').html(data);
                 },
                 error: function (xhr,errmsg,err) {
-                    $('#appointment-list').html("<div class='alert-box alert radius' data-alert>Oops! " + errmsg + " <a href='#' class='close'>&times;</a></div>");
-                    console.log(xhr.status + ": " + xhr.responseText);
+                    ajaxError('appointment-list', 'Erreur: impossible de chercher les rendez-vous', xhr, 'appointmentSearch')
                 }
             });
         }

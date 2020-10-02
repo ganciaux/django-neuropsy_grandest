@@ -16,6 +16,9 @@ def details(request, client_id):
     client = get_object_or_404(Client, pk=client_id)
     context = {
         'client': client,
+        'orders': client.order_set.all(),
+        'appointments': client.appointment_set.all(),
+        'payments': client.payment_set.all(),
         'client_data': client.get_all_fields(),
         'error_message': "Le client n'existe pas.",
     }
