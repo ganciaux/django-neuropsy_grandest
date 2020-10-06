@@ -1,0 +1,14 @@
+<div class="card neuropsy-card-accordion">
+  <div class="card-header" id="{{ card_header_id|default:'card_header_id' }}">
+    <h5 class="mb-0">
+        <button class="btn btn-link neuropsy-accordion-header" data-toggle="collapse" data-target="#{{ card_target_id|default:'card_target_id' }}" aria-expanded="{{ expanded|default:'false' }}" aria-controls="{{ card_target_id|default:'card_target_id' }}">
+          {% block header %} {% endblock %}
+        </button>
+      </h5>
+  </div>
+  <div id="{{ card_target_id|default:'card_target_id' }}" class="collapse {{ show|default:'' }}" aria-labelledby="{{ card_header_id|default:'card_header_id' }}">
+    <div class="card-body">
+     {% block body %}{% endblock %}
+    </div>
+  </div>
+</div>

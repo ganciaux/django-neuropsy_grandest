@@ -8,6 +8,6 @@
 {% block content %}
     <h4>{{order}}</h4>
     <div id="order-details" class="neuropsy-details">
-        {% include "order/data.html" with order=order %}
+        {% include "layout/data.html" with data_header='Détails' model_data=order_data card_header_id='order-details' card_target_id='order-details-list' show='show' %}
     </div>
 {% endblock %}

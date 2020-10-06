@@ -2,3 +2,4 @@
 static_media
 migrations
 db.sqlite3
+env

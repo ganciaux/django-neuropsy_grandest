@@ -29,6 +29,12 @@ class Order(TimeStampedModel):
     def get_date_display(self):
         return self.date.strftime("%d-%m-%Y %H:%M")
 
+    def get_total(self):
+        total = 0.00
+        for data in OrderData.objects.filter(order_id=self.id):
+            total += data.quantity * data.article.amount
+        return total;
+
 
 class OrderData(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)

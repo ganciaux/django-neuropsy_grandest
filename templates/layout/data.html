@@ -1,7 +1,7 @@
-{% extends "layout/card.html" %}
+{% extends "layout/accordion.html" %}
 
 {% block header %}
-    <h6>{{ title|Détails }}</h6>
+    {{ data_header|default:'Détails' }}
 {% endblock %}
 
 {% block body %}

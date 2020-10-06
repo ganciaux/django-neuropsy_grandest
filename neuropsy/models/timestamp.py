@@ -1,5 +1,7 @@
 from django.db import models
 from datetime import datetime
+import calendar
+
 
 class TimeStampedModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -33,7 +35,7 @@ class TimeStampedModel(models.Model):
                     value = None
 
             # only display fields with values and skip some fields entirely
-            if f.editable and f.name not in ('id'):
+            if f.editable and f.name not in 'id':
                 fields.append(
                     {
                         'label': f.verbose_name,
@@ -63,3 +65,11 @@ class TimeStampedModel(models.Model):
                 dates_datetime[key] = datetime.strptime(dates[key], format)
         return result
 
+    @classmethod
+    def get_first_month_day(cls):
+        return datetime.now().replace(day=1, hour=0, minute=0, second=0)
+
+    @classmethod
+    def get_last_month_day(cls):
+        date_now = datetime.now()
+        return date_now.replace(day=calendar.monthrange(date_now.year, date_now.month)[1], hour=23, minute=59, second=59)

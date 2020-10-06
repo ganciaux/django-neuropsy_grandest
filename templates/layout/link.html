@@ -1,0 +1,16 @@
+{% extends "layout/accordion.html" %}
+
+{% block header %}
+    <span class="badge badge-info neuropsy-badge">{{ link_list.count }}</span>
+    <span>{{ link_header|default:'Title'}}</span>
+{% endblock %}
+
+{% block body %}
+    <ul>
+        {% for link in link_list %}
+            <li>
+                <a class="nav-link" href="{% url link_url link.id %}">{{ link }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

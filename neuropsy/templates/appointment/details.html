@@ -8,6 +8,6 @@
 {% block content %}
     <h4>{{appointment}}</h4>
     <div id="appointment-details" class="neuropsy-details">
-        {% include "appointment/data.html" with appointment=appointment %}
+        {% include "layout/data.html" with data_header='Détails' model_data=appointment_data card_header_id='appointment-details' card_target_id='appointment-details-list' show='show'%}
     </div>
 {% endblock %}

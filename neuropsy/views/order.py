@@ -13,6 +13,7 @@ def date_validate(date_text, format='%d-%m-%Y %H:%M'):
     except ValueError:
         return False
 
+
 def index(request):
     context = {
         'form': searchForm()
@@ -31,7 +32,8 @@ def details(request, order_id):
 
 
 def search(request):
-    if date_validate(request.GET.get('date_from', None))==True and date_validate(request.GET.get('date_to', None))==True:
+    if date_validate(request.GET.get('date_from', None)) == True and date_validate(
+            request.GET.get('date_to', None)) == True:
         date_from = datetime.strptime(request.GET.get('date_from', None), "%d-%m-%Y %H:%M")
         date_to = datetime.strptime(request.GET.get('date_to', None), "%d-%m-%Y %H:%M")
         orders = Order.objects.exclude(date__lte=date_from).exclude(date__gte=date_to)
@@ -45,9 +47,9 @@ def search(request):
             'message': 'Aucune commande',
             'type': 'primary'
         }
-    
+
     context = {
-            'message': 'Erreur de date',
-            'type': 'primary'
-        }
+        'message': 'Erreur de date',
+        'type': 'primary'
+    }
     return render(request, 'alert.html', context)

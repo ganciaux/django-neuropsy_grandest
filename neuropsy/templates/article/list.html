@@ -18,7 +18,7 @@
         {% for article in articles %}
             <tr>
                 <td>{{ article.label }}</td>
-                <td>{{ article.price }}</td>
+                <td>{{ article.amount }}</td>
                 <td>{{ article.description }}</td>
                 <td><a href="{% url 'article:details' article.id %}"><button type="button" class="btn btn-secondary btn-sm">Détails</button></a></td>
             </tr>

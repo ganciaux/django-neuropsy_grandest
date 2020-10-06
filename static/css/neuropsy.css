@@ -126,3 +126,11 @@ body {
 .neuropsy-form-group input {
   colord: blue;
 }
+
+.neuropsy-accordion-header {
+    text-decoration: none!important;
+}
+
+.neuropsy-badge {
+  padding-right:5px;
+}
