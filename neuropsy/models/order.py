@@ -23,6 +23,9 @@ class Order(TimeStampedModel):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     articles = models.ManyToManyField(Article, through='OrderData')
 
+    class Meta:
+        verbose_name = "Commande"
+
     def __str__(self):
         return self.date.strftime("%d-%m-%Y %H:%M") + ' ' + self.client.first_name
 
@@ -41,3 +44,6 @@ class OrderData(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     description = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name = "Détail"

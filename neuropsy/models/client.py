@@ -89,6 +89,9 @@ class Client(TimeStampedModel):
     birth_date = models.DateField(null=True, blank=True, verbose_name='Date de naissance')
     description = models.TextField(blank=True, verbose_name='Description')
 
+    class Meta:
+        verbose_name = "Client"
+
     def __str__(self):
         return self.first_name + ' ' + self.last_name
 

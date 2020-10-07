@@ -47,6 +47,9 @@ class Appointment(TimeStampedModel):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE, blank=True, null=True)
 
+    class Meta:
+        verbose_name = "Rendez-vous"
+
     def __str__(self):
         return self.date.strftime("%d-%m-%Y %H:%M") + ' ' + self.client.first_name
 

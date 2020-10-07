@@ -9,6 +9,9 @@ class Article(TimeStampedModel):
     amount = models.DecimalField(decimal_places=2, max_digits=10, verbose_name='Prix')
     description = models.TextField(blank=True, verbose_name='Description')
 
+    class Meta:
+        verbose_name = "Article"
+
     def __str__(self):
         return self.label + ' ' + str(self.amount)
 
