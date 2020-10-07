@@ -1,0 +1,23 @@
+[
+  {
+    "model": "neuropsy.article",
+    "fields": {
+      "label": "Bilan 1",
+      "amount": 460.00,
+      "description": "Bilan long",
+      "created_at": "2020-10-01 00:00",
+      "updated_at": "2020-10-01 00:00"
+    }
+  },
+  {
+    "model": "neuropsy.article",
+    "pk": 2,
+    "fields": {
+      "label": "Bilan 2",
+      "amount": 260.00,
+      "description": "Bilan court",
+      "created_at": "2020-10-01 00:00",
+      "updated_at": "2020-10-01 00:00"
+    }
+  }
+]

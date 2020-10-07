@@ -1,5 +1,7 @@
 *__pycache__*
+*.DS_Store*
 static_media
 migrations
 db.sqlite3
 env
+.idea
