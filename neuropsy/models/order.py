@@ -5,6 +5,8 @@ from .timestamp import TimeStampedModel
 
 
 class Order(TimeStampedModel):
+    client = models.ForeignKey(Client, on_delete=models.CASCADE, verbose_name='Client')
+    date = models.DateField(verbose_name='Date')
     ORDER_STATUS_IN_PROGRESS = 'IN_PROGRESS'
     ORDER_STATUS_CANCELED = 'CANCELED'
     ORDER_STATUS_FINISHED = 'FINISHED'
@@ -17,10 +19,9 @@ class Order(TimeStampedModel):
         max_length=16,
         choices=ORDER_STATUS_CHOICES,
         default=ORDER_STATUS_IN_PROGRESS,
+        verbose_name='Statut'
     )
     description = models.TextField(blank=True)
-    date = models.DateTimeField()
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
     articles = models.ManyToManyField(Article, through='OrderData')
 
     class Meta:
@@ -36,14 +37,14 @@ class Order(TimeStampedModel):
         total = 0.00
         for data in OrderData.objects.filter(order_id=self.id):
             total += data.quantity * data.article.amount
-        return total;
+        return total
 
 
 class OrderData(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    article = models.ForeignKey(Article, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField()
-    description = models.TextField(blank=True)
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, verbose_name='Article')
+    quantity = models.PositiveIntegerField(verbose_name='QUnatité')
+    description = models.TextField(blank=True, verbose_name='Description')
 
     class Meta:
         verbose_name = "Détail"

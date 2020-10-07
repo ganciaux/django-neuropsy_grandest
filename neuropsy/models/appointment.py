@@ -5,6 +5,8 @@ from .timestamp import TimeStampedModel
 
 
 class Appointment(TimeStampedModel):
+    client = models.ForeignKey(Client, on_delete=models.CASCADE, verbose_name='Client')
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, blank=True, null=True, verbose_name='Commande')
     APPOINTMENT_TYPE_NONE = 'NONE'
     APPOINTMENT_TYPE_INITIAL = 'INITIAL'
     APPOINTMENT_TYPE_RESTITUTION = 'RESTITUTION'
@@ -25,7 +27,9 @@ class Appointment(TimeStampedModel):
         max_length=16,
         choices=APPOINTMENT_TYPE_CHOICES,
         default=APPOINTMENT_TYPE_NONE,
+        verbose_name='Type de rendez-vous',
     )
+    date = models.DateTimeField(verbose_name='Date')
     APPOINTMENT_STATUS_NONE = 'NONE'
     APPOINTMENT_STATUS_NORMAL = 'NORMAL'
     APPOINTMENT_STATUS_COMING = 'COMING'
@@ -41,11 +45,9 @@ class Appointment(TimeStampedModel):
         max_length=16,
         choices=APPOINTMENT_STATUS_CHOICES,
         default=APPOINTMENT_STATUS_NONE,
+        verbose_name='Statut',
     )
-    description = models.TextField(blank=True)
-    date = models.DateTimeField()
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, blank=True, null=True)
+    description = models.TextField(blank=True, verbose_name='Description')
 
     class Meta:
         verbose_name = "Rendez-vous"

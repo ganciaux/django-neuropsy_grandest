@@ -5,6 +5,9 @@ from .timestamp import TimeStampedModel
 
 
 class Payment(TimeStampedModel):
+    client = models.ForeignKey(Client, on_delete=models.CASCADE, verbose_name='Client')
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, blank=True, null=True, verbose_name='Commande')
+    date = models.DateField(verbose_name='Date')
     PAYMENT_TYPE_CHECK = 'CHECK'
     PAYMENT_TYPE_CASH = 'CASH'
     PAYMENT_TYPE_CREDIT_CARD = 'CREDIT_CARD'
@@ -21,11 +24,9 @@ class Payment(TimeStampedModel):
         max_length=16,
         choices=PAYMENT_TYPE_CHOICES,
         default=PAYMENT_TYPE_CHECK,
+        verbose_name='Type de paiment'
     )
     amount = models.DecimalField(decimal_places=2, max_digits=10, verbose_name='Montant')
-    date = models.DateTimeField()
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
         verbose_name = "Paiment"
