@@ -7,6 +7,7 @@ from .timestamp import TimeStampedModel
 class Order(TimeStampedModel):
     client = models.ForeignKey(Client, on_delete=models.CASCADE, verbose_name='Client')
     date = models.DateField(verbose_name='Date')
+    reference = models.CharField(max_length=64, default="", verbose_name='Réference')
     ORDER_STATUS_IN_PROGRESS = 'IN_PROGRESS'
     ORDER_STATUS_CANCELED = 'CANCELED'
     ORDER_STATUS_FINISHED = 'FINISHED'
@@ -34,16 +35,16 @@ class Order(TimeStampedModel):
         return self.date.strftime("%d-%m-%Y %H:%M")
 
     def get_total(self):
-        total = 0.00
+        total = float(0.00)
         for data in OrderData.objects.filter(order_id=self.id):
-            total += data.quantity * data.article.amount
+            total += float(data.quantity) * float(data.article.amount)
         return total
 
 
 class OrderData(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     article = models.ForeignKey(Article, on_delete=models.CASCADE, verbose_name='Article')
-    quantity = models.PositiveIntegerField(verbose_name='QUnatité')
+    quantity = models.PositiveIntegerField(verbose_name='Quantité')
     description = models.TextField(blank=True, verbose_name='Description')
 
     class Meta:

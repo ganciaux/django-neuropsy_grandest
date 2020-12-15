@@ -2,31 +2,48 @@ from django.contrib import admin
 from .models import Appointment, Client, Article, Order, OrderData, Payment
 
 
-admin.site.site_header = "Neuropsy Grand-Est"
-admin.site.site_title = "Neuropsy Grand-Est"
-admin.site.index_title = "Administration du site Neuropsy Grand-Est"
-
-
 @admin.register(Client)
 class ClientAdmin(admin.ModelAdmin):
-    list_filter = ['origin']
-    list_per_page = 100
+    list_display = ('first_name', 'last_name', 'phone', 'email', 'client_address')
+    list_filter = ['first_name']
+    search_fields = ['first_name']
+
+    def client_address(self, obj):
+        address = ""
+        if len(obj.address) > 0:
+            address = obj.address
+        if len(obj.city) > 0:
+            if len(address) > 0:
+                address += ", "
+            address += obj.city
+        if len(obj.zip) > 0:
+            if len(address) > 0:
+                address += ", "
+            address += obj.zip
+        return address
+
+    client_address.short_description = 'Adresse'
 
 
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
-    list_filter = ['date', 'type', 'client']
-    raw_id_fields = ["client"]
-    list_per_page = 100
+    list_filter = ['client', 'type', 'status', 'date']
+    ordering = ('-date',)
+    list_display = ('date', 'client', 'status', 'type', 'order')
 
 
-admin.site.register(Article)
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+    list_filter = ['label', 'amount']
+    ordering = ('label',)
+    list_display = ('label', 'amount')
 
 
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
-    list_filter = ['date', 'type', 'client']
-    list_per_page = 100
+    list_filter = ['client', 'type', 'date']
+    ordering = ('-date',)
+    list_display = ('date', 'client', 'amount', 'type')
 
 
 class OrderDataInline(admin.TabularInline):
@@ -36,16 +53,17 @@ class OrderDataInline(admin.TabularInline):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    inlines = [OrderDataInline]
+    inlines = [
+        OrderDataInline,
+    ]
+    list_display = ('date', 'client', 'status', 'order_total')
+    list_filter = ['client', 'date']
+    ordering = ('-date',)
+
+    def order_total(self, obj):
+        return obj.get_total
+
+    order_total.short_description = 'Total'
 
 
-@admin.register(Order)
-class OrderAdmin(OrderAdmin):
-    list_filter = ['date', 'status', 'client']
-    list_per_page = 100
-    readonly_fields = ('is_finished',)
-
-    def is_finished(self, obj):
-        return obj.status == 'FINISHED'
-
-    is_finished.boolean = True
+admin.site.register(Order, OrderAdmin)

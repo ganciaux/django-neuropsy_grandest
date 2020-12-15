@@ -5,6 +5,6 @@ from neuropsy.views import payment
 app_name = 'payment'
 urlpatterns = [
     path('', payment.index, name='index'),
-    path('details/<int:appointment_id>', payment.details, name='details'),
+    path('details/<int:payment_id>', payment.details, name='details'),
     path('search', payment.search, name='search'),
 ]

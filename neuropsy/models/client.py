@@ -8,6 +8,7 @@ class Client(TimeStampedModel):
     last_name = models.CharField(max_length=64, verbose_name='Nom')
     first_name = models.CharField(max_length=64, verbose_name='Prénom')
     birth_date = models.DateField(null=True, blank=True, verbose_name='Date de naissance')
+    reference = models.CharField(max_length=64, default="", verbose_name='Réference')
     CLIENT_TYPE_NONE = 'NONE'
     CLIENT_TYPE_MISS = 'MISS'
     CLIENT_TYPE_MRS = 'MRS'

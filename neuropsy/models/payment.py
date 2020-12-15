@@ -32,7 +32,7 @@ class Payment(TimeStampedModel):
         verbose_name = "Paiment"
 
     def __str__(self):
-        return self.date.strftime("%d-%m-%Y %H:%M") + ' ' + self.client.first_name + '(' + str(self.price) + ')'
+        return self.date.strftime("%d-%m-%Y %H:%M") + ' ' + self.client.first_name + '(' + str(self.amount) + ')'
 
     def get_date_display(self):
         return self.date.strftime("%d-%m-%Y %H:%M")

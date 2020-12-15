@@ -51,6 +51,7 @@ class Appointment(TimeStampedModel):
 
     class Meta:
         verbose_name = "Rendez-vous"
+        verbose_name_plural = "Rendez-vous"
 
     def __str__(self):
         return self.date.strftime("%d-%m-%Y %H:%M") + ' ' + self.client.first_name
